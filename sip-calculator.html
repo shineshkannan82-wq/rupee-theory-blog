@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate the future value of your monthly SIP, total investment, and estimated wealth gained with an interactive Indian rupee calculator.">
+  <meta name="theme-color" content="#143f32">
+  <title>SIP Calculator | Rupee Theory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="brand" href="index.html"><span class="brand-mark">₹</span><span>Rupee Theory</span></a>
+      <div class="nav-wrap" data-nav-wrap>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="investment-basics.html">Investment Basics</a></li>
+          <li><a class="nav-link active" href="sip-calculator.html">SIP Calculator</a></li>
+          <li><a class="nav-link" href="stock-market-terms.html">Market Terms</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="button nav-cta" href="investment-basics.html#sip">Learn about SIPs</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.3 15.3A8.5 8.5 0 0 1 8.7 3.7 8.5 8.5 0 1 0 20.3 15.3Z"/></svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero-inner reveal">
+        <span class="eyebrow">SIP calculator</span>
+        <h1>Give your monthly habit a long-term view.</h1>
+        <p>Estimate how a regular monthly investment could grow over time. Adjust the assumptions and compare what you invest with the wealth compounding may create.</p>
+        <div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>SIP Calculator</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="calculator-layout">
+          <form class="calculator-panel reveal" data-sip-form>
+            <h2>Your assumptions</h2>
+            <p>Move the sliders or type exact values.</p>
+
+            <div class="form-group">
+              <div class="form-label-row"><label class="form-label" for="monthlyInvestment">Monthly investment</label></div>
+              <div class="input-wrap"><span class="input-prefix">₹</span><input class="form-control has-prefix" id="monthlyInvestment" type="number" min="500" max="1000000" step="500" value="10000" required></div>
+              <input id="monthlyRange" type="range" min="500" max="100000" step="500" value="10000" aria-label="Monthly investment slider">
+              <div class="range-labels"><span>₹500</span><span>₹1 lakh</span></div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row"><label class="form-label" for="annualReturn">Expected annual return</label></div>
+              <div class="input-wrap"><input class="form-control has-suffix" id="annualReturn" type="number" min="0" max="30" step="0.5" value="12" required><span class="input-suffix">%</span></div>
+              <input id="returnRange" type="range" min="0" max="30" step="0.5" value="12" aria-label="Expected return slider">
+              <div class="range-labels"><span>0%</span><span>30%</span></div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row"><label class="form-label" for="durationYears">Investment duration</label></div>
+              <div class="input-wrap"><input class="form-control has-suffix" id="durationYears" type="number" min="1" max="50" step="1" value="15" required><span class="input-suffix">Years</span></div>
+              <input id="yearsRange" type="range" min="1" max="50" step="1" value="15" aria-label="Investment duration slider">
+              <div class="range-labels"><span>1 year</span><span>50 years</span></div>
+            </div>
+
+            <button class="button button-accent" type="submit">Calculate future value</button>
+            <p class="calc-error" data-calc-error role="alert"></p>
+          </form>
+
+          <section class="results-panel reveal" aria-live="polite">
+            <div class="results-head"><h2>Your projected growth</h2><p>An illustration based on the assumptions you selected.</p></div>
+            <div class="results-grid">
+              <div class="result-item"><div class="result-label">Total invested</div><div class="result-value" data-total-invested>₹0</div></div>
+              <div class="result-item highlight"><div class="result-label">Wealth gained</div><div class="result-value" data-wealth-gained>₹0</div></div>
+              <div class="result-item"><div class="result-label">Future value</div><div class="result-value" data-future-value>₹0</div></div>
+            </div>
+            <div class="chart-wrap"><canvas id="sipChart" role="img" aria-label="Line chart comparing amount invested with projected portfolio value over time"></canvas></div>
+            <div class="chart-legend"><span class="legend-item"><span class="legend-swatch"></span>Projected value</span><span class="legend-item"><span class="legend-swatch"></span>Amount invested</span></div>
+          </section>
+        </div>
+
+        <div class="formula-note reveal">
+          <strong>How this is calculated:</strong> Each monthly contribution is compounded at the selected annual return divided into monthly periods. The calculator assumes contributions are made at the beginning of each month. It does not include taxes, fund costs, changing returns, or inflation.
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-heading"><span class="eyebrow">Before you rely on the number</span><h2>A calculator is a planning tool, not a promise.</h2></div>
+        </div>
+        <div class="learning-grid">
+          <article class="learning-card reveal"><span class="learning-number">01</span><h2>Returns will vary</h2><p>Markets do not deliver the same return every year. Your actual journey will include stronger years, weaker years, and sometimes losses.</p></article>
+          <article class="learning-card reveal"><span class="learning-number">02</span><h2>Inflation matters</h2><p>A future amount will buy less than the same amount today. Set goals using expected future costs, especially for education and retirement.</p></article>
+          <article class="learning-card reveal"><span class="learning-number">03</span><h2>Increase when possible</h2><p>A step-up SIP, where contributions rise with your income, can have a meaningful effect on long-term results.</p></article>
+          <article class="learning-card reveal"><span class="learning-number">04</span><h2>Match risk to the goal</h2><p>A high assumed return often implies higher risk. Choose investments based on the goal and time available, not the most exciting projection.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-about"><a class="brand" href="index.html"><span class="brand-mark">₹</span><span>Rupee Theory</span></a><p>Independent financial education for people who want to understand money before putting it to work.</p></div>
+      <div><h2 class="footer-title">Learn</h2><ul class="footer-links"><li><a href="investment-basics.html">Investment Basics</a></li><li><a href="stock-market-terms.html">Market Terms</a></li><li><a href="sip-calculator.html">SIP Calculator</a></li></ul></div>
+      <div><h2 class="footer-title">Explore</h2><ul class="footer-links"><li><a href="index.html#latest">Latest Articles</a></li><li><a href="index.html#explore">Learning Paths</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h2 class="footer-title">Contact</h2><ul class="footer-links"><li><a href="mailto:rupeetheory28@gmail.com">rupeetheory28@gmail.com</a></li><li><a href="tel:+919003843868">+91 90038 43868</a></li></ul></div>
+    </div>
+    <div class="container footer-bottom"><p>© 2026 Rupee Theory. Calculations are illustrative only.</p><div class="footer-socials"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">LinkedIn</a></div></div>
+  </footer>
+  <button class="scroll-top" type="button" data-scroll-top aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 15 6-6 6 6"/></svg></button>
+</body>
+</html>
